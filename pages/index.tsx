@@ -1,19 +1,14 @@
-import tw from 'twin.macro'
-import { Button, Logo } from '../components'
+import Header1 from '../components/Header1'
+import Header2 from '../components/Header2'
+import Header3 from '../components/Header3'
+import Header4 from '../components/Header4'
 
 const App: React.FC = () => (
-  <div
-    css={[
-      tw`flex flex-col items-center justify-center h-screen`,
-      tw`bg-gradient-to-b from-electric to-ribbon`,
-    ]}
-  >
-    <div tw="flex flex-col justify-center h-full space-y-5">
-      <Button isPrimary>Submit</Button>
-      <Button isSecondary>Cancel</Button>
-      <Button isSmall>Close</Button>
-    </div>
-    <Logo />
+  <div>
+    <Header1 />
+    <Header2 />
+    <Header3 />
+    <Header4 />
   </div>
 )
 

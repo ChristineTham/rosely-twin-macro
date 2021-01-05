@@ -5,6 +5,9 @@ module.exports = {
         electric: '#db00ff',
         ribbon: '#0047ff',
       },
+      spacing: {
+        128: '32rem',
+      },
     },
   },
   plugins: [],
