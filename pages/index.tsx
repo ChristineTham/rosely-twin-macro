@@ -1,41 +1,20 @@
-import { GetServerSideProps, NextPage } from 'next'
+import tw from 'twin.macro'
+import { Button, Logo } from '../components'
 
-interface Props {
-  launch: {
-    mission: string
-    site: string
-    timestamp: number
-    rocket: string
-  }
-}
-const IndexPage: NextPage<Props> = ({ launch }) => {
-  const date = new Date(launch.timestamp)
-  return (
-    <main>
-      <h1>Next SpaceX Launch: {launch.mission}</h1>
-      <p>
-        {launch.rocket} will take off from {launch.site} on {date.toDateString()}
-      </p>
-    </main>
-  )
-}
-export default IndexPage
+const App: React.FC = () => (
+  <div
+    css={[
+      tw`flex flex-col items-center justify-center h-screen`,
+      tw`bg-gradient-to-b from-electric to-ribbon`,
+    ]}
+  >
+    <div tw="flex flex-col justify-center h-full space-y-5">
+      <Button isPrimary>Submit</Button>
+      <Button isSecondary>Cancel</Button>
+      <Button isSmall>Close</Button>
+    </div>
+    <Logo />
+  </div>
+)
 
-/*
- * More information about getServerSideProps:
- * https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
- */
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  const response = await fetch('https://api.spacexdata.com/v3/launches/next')
-  const nextLaunch = await response.json()
-  return {
-    props: {
-      launch: {
-        mission: nextLaunch.mission_name,
-        site: nextLaunch.launch_site.site_name_long,
-        timestamp: nextLaunch.launch_date_unix * 1000,
-        rocket: nextLaunch.rocket.rocket_name,
-      },
-    },
-  }
-}
+export default App
